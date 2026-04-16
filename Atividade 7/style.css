@@ -1,0 +1,30 @@
+body {
+  font-family: Arial;
+  text-align: center;
+  background-color: #f0f0f0;
+  margin-top: 50px;
+}
+
+h1 {
+  color: #333;
+}
+
+.botoes button {
+  padding: 15px 25px;
+  margin: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+}
+
+.botoes button:hover {
+  background-color: #0056b3;
+}
+
+.resultado {
+  margin-top: 30px;
+  font-size: 20px;
+}
