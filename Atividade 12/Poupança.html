@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Conta Bancária</title>
+</head>
+<body>
+
+<script>
+
+class Conta {
+
+    constructor() {
+        this._nomeCorrentista = "";
+        this._banco = "";
+        this._numeroConta = "";
+        this._saldo = 0;
+    }
+
+    set nomeCorrentista(valor) {
+        this._nomeCorrentista = valor;
+    }
+
+    get nomeCorrentista() {
+        return this._nomeCorrentista;
+    }
+
+    set banco(valor) {
+        this._banco = valor;
+    }
+
+    get banco() {
+        return this._banco;
+    }
+
+    set numeroConta(valor) {
+        this._numeroConta = valor;
+    }
+
+    get numeroConta() {
+        return this._numeroConta;
+    }
+
+    set saldo(valor) {
+        this._saldo = valor;
+    }
+
+    get saldo() {
+        return this._saldo;
+    }
+}
+
+class Corrente extends Conta {
+
+    constructor() {
+        super();
+        this._saldoEspecial = 0;
+    }
+
+    set saldoEspecial(valor) {
+        this._saldoEspecial = valor;
+    }
+
+    get saldoEspecial() {
+        return this._saldoEspecial;
+    }
+}
+
+class Poupanca extends Conta {
+
+    constructor() {
+        super();
+        this._juros = 0;
+        this._dataVencimento = "";
+    }
+
+    set juros(valor) {
+        this._juros = valor;
+    }
+
+    get juros() {
+        return this._juros;
+    }
+
+    set dataVencimento(valor) {
+        this._dataVencimento = valor;
+    }
+
+    get dataVencimento() {
+        return this._dataVencimento;
+    }
+}
+
+
+let cc = new Corrente();
+
+cc.nomeCorrentista = prompt("Nome do correntista:");
+cc.banco = prompt("Banco:");
+cc.numeroConta = prompt("Número da conta:");
+cc.saldo = Number(prompt("Saldo:"));
+cc.saldoEspecial = Number(prompt("Saldo especial:"));
+
+alert(
+"CONTA CORRENTE\n\n" +
+"Nome: " + cc.nomeCorrentista +
+"\nBanco: " + cc.banco +
+"\nConta: " + cc.numeroConta +
+"\nSaldo: " + cc.saldo +
+"\nSaldo Especial: " + cc.saldoEspecial
+);
+
+
+let poup = new Poupanca();
+
+poup.nomeCorrentista = prompt("Nome do correntista:");
+poup.banco = prompt("Banco:");
+poup.numeroConta = prompt("Número da conta:");
+poup.saldo = Number(prompt("Saldo:"));
+poup.juros = Number(prompt("Juros:"));
+poup.dataVencimento = prompt("Data de vencimento:");
+
+alert(
+"POUPANÇA\n\n" +
+"Nome: " + poup.nomeCorrentista +
+"\nBanco: " + poup.banco +
+"\nConta: " + poup.numeroConta +
+"\nSaldo: " + poup.saldo +
+"\nJuros: " + poup.juros +
+"\nData Vencimento: " + poup.dataVencimento
+);
+
+</script>
+
+</body>
+</html>
