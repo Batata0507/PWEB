@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercício 1</title>
+
+<style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #00cfff;
+    }
+
+    .container{
+        width: 400px;
+        margin: auto;
+        background-color: #00cfff;
+        padding: 20px;
+        color: white;
+    }
+
+    h1{
+        text-align: center;
+    }
+
+    input, textarea{
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .radio{
+        width: auto;
+    }
+
+    .botoes{
+        text-align: center;
+    }
+</style>
+
+<script>
+function validar() {
+
+    let nome = document.formulario.elements["nome"].value;
+    let email = document.formulario.elements["email"].value;
+    let comentario = document.formulario.elements["comentario"].value;
+    let pesquisa = document.formulario.elements["pesquisa"];
+
+    if(nome.length < 10){
+        alert("O nome deve ter pelo menos 10 caracteres.");
+        return false;
+    }
+
+    if(comentario.length < 20){
+        alert("O comentário deve ter no mínimo 20 caracteres.");
+        return false;
+    }
+
+    let resposta = "";
+
+    for(let i = 0; i < pesquisa.length; i++){
+        if(pesquisa[i].checked){
+            resposta = pesquisa[i].value;
+        }
+    }
+
+    if(resposta == ""){
+        alert("Selecione uma opção da pesquisa.");
+        return false;
+    }
+
+    if(resposta == "sim"){
+        alert("Volte sempre à esta página!");
+    } else {
+        alert("Que bom que você voltou a visitar esta página!");
+    }
+
+    return true;
+}
+</script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Formulário Principal</h1>
+
+    <form name="formulario" onsubmit="return validar()">
+
+        Nome:
+        <input type="text" name="nome">
+
+        E-mail:
+        <input type="email" name="email">
+
+        Comentário:
+        <textarea name="comentario" rows="5"></textarea>
+
+        <h3>Pesquisa:</h3>
+
+        Primeiro acesso nesta página?
+
+        <br><br>
+
+        <input class="radio" type="radio" name="pesquisa" value="sim"> Sim
+
+        <input class="radio" type="radio" name="pesquisa" value="nao"> Não
+
+        <br><br>
+
+        <div class="botoes">
+            <input type="submit" value="Enviar">
+            <input type="reset" value="Limpar">
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>
