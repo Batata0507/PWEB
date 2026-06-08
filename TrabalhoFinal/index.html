@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban - Projeto de Software</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <div class="sidebar-logo-icon">K</div>
+            <span>Kanban</span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <button class="sidebar-nav-item active">
+                <span class="sidebar-nav-icon">📊</span>
+                Overview
+            </button>
+            <button class="sidebar-nav-item">
+                <span class="sidebar-nav-icon">📋</span>
+                Board
+            </button>
+            <button class="sidebar-nav-item">
+                <span class="sidebar-nav-icon">📅</span>
+                Calendar
+            </button>
+            <button class="sidebar-nav-item">
+                <span class="sidebar-nav-icon">📈</span>
+                Reports
+            </button>
+            <button class="sidebar-nav-item">
+                <span class="sidebar-nav-icon">📁</span>
+                Files
+            </button>
+        </nav>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Project Team</div>
+            <div class="team-member">
+                <div class="avatar">GH</div>
+                <span>Gustavo H.</span>
+            </div>
+            <div class="team-member">
+                <div class="avatar" style="background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);">LS</div>
+                <span>Luana S.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <button class="project-selector">
+                    📁 E-Commerce Platform ▼
+                </button>
+                <div class="search-box">
+                    <span>🔍</span>
+                    <input type="text" id="searchInput" placeholder="Search tasks...">
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="icon-btn">🔽</button>
+                <button class="icon-btn">⋯</button>
+                <button class="btn-new-task" onclick="openModal()">
+                    <span>+</span>
+                    New Task
+                </button>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <div class="board">
+                <!-- Backlog Column -->
+                <div class="column">
+                    <div class="column-header">
+                        <div class="column-title">
+                            <h2>Backlog</h2>
+                            <span class="column-count" id="count-backlog">0</span>
+                        </div>
+                        <button class="column-menu">⋯</button>
+                    </div>
+                    <div class="tasks-list" id="column-backlog" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 'Backlog')" ondragleave="handleDragLeave(event)">
+                        <div class="empty-state">No tasks yet</div>
+                    </div>
+                    <button class="add-task-btn" onclick="openModal()">+ Add Task</button>
+                </div>
+
+                <!-- Development Column -->
+                <div class="column">
+                    <div class="column-header">
+                        <div class="column-title">
+                            <h2>Development</h2>
+                            <span class="column-count" id="count-desenvolvimento">0</span>
+                        </div>
+                        <button class="column-menu">⋯</button>
+                    </div>
+                    <div class="tasks-list" id="column-desenvolvimento" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 'Desenvolvimento')" ondragleave="handleDragLeave(event)">
+                        <div class="empty-state">No tasks yet</div>
+                    </div>
+                    <button class="add-task-btn" onclick="openModal()">+ Add Task</button>
+                </div>
+
+                <!-- Done Column -->
+                <div class="column">
+                    <div class="column-header">
+                        <div class="column-title">
+                            <h2>Done</h2>
+                            <span class="column-count" id="count-concluido">0</span>
+                        </div>
+                        <button class="column-menu">⋯</button>
+                    </div>
+                    <div class="tasks-list" id="column-concluido" ondragover="handleDragOver(event)" ondrop="handleDrop(event, 'Concluído')" ondragleave="handleDragLeave(event)">
+                        <div class="empty-state">No tasks yet</div>
+                    </div>
+                    <button class="add-task-btn" onclick="openModal()">+ Add Task</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">New Task</h2>
+            </div>
+
+            <form id="taskForm" onsubmit="handleSaveTask(event)">
+                <div class="form-group">
+                    <label for="title">Title *</label>
+                    <input type="text" id="title" placeholder="Enter task title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" placeholder="Enter task description (optional)"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="priority">Priority</label>
+                        <select id="priority">
+                            <option value="Média">Medium</option>
+                            <option value="Alta">High</option>
+                            <option value="Baixa">Low</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dueDate">Due Date</label>
+                        <input type="date" id="dueDate">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="responsible">Responsible</label>
+                    <input type="text" id="responsible" placeholder="Enter responsible person">
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
